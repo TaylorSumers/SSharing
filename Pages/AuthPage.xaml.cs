@@ -1,6 +1,9 @@
-﻿using System;
+﻿using SecretsSharing.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,5 +27,33 @@ namespace SecretsSharing.Pages
         {
             InitializeComponent();
         }
+
+        private void btnEnter_Click(object sender, RoutedEventArgs e)
+        {
+            var login = tbxLogin.Text;
+            var password = pbxPassword.Password;
+
+            if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Логин и пароль - обязательные поля");
+                return;
+            }
+
+            HttpResponseMessage response;
+            using(var client = new HttpClient())
+            {
+                response = client.GetAsync($"https://localhost:44306/api/Users/GetUser/login={login}&password={password}").Result;
+            }
+
+            var result = response.Content.ReadAsStringAsync().Result;
+            if (response.IsSuccessStatusCode)
+                NavigationService.Navigate(new FilesPage(Convert.ToInt32(result)));
+            else
+                MessageBox.Show(result, "Api says");
+        }
+
+        private void btnToRegPage_Click(object sender, RoutedEventArgs e) => NavigationService.Navigate(new RegPage());
+
+        private void btnGetFileByUrl_Click(object sender, RoutedEventArgs e) => new GetByUrlWindow().ShowDialog();
     }
 }

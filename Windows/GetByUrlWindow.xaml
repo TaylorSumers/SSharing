@@ -1,0 +1,22 @@
+﻿<Window x:Class="SecretsSharing.Windows.GetByUrlWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SecretsSharing.Windows"
+        mc:Ignorable="d" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        Title="Скачать файл" Height="150" Width="300">
+
+    <Grid Margin="10 0">
+
+
+
+        <StackPanel  Grid.Row="2" VerticalAlignment="Center">
+            <TextBlock Text="URL для получения"/>
+            <TextBox Name="tbxUrl"/>
+            <Button Name="btnDownload" Content="Скачать" Height="25" Width="80"
+                Click="btnDownload_Click" Margin="5"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

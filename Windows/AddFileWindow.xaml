@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SecretsSharing.Windows"
-        mc:Ignorable="d" ResizeMode="NoResize"
+        mc:Ignorable="d" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         Title="Добавить файл" Height="200" Width="300">
     
     <Grid Margin="10 0">
@@ -26,14 +26,17 @@
 
         <!-- Row 2 -->
         <StackPanel Grid.Row="1" VerticalAlignment="Center">
-            <TextBlock Text="Путь к файлу:"/>
+            <TextBlock Name="tbHeader" Text="Путь к файлу:"/>
             <TextBox Name="tbxVal" Margin="0 5" PreviewMouseDown="tbxVal_PreviewMouseDown"/>
         </StackPanel>
 
         <!-- Row 3 -->
-        <Button Name="btnUpload" Content="Загрузить" Grid.Row="2" Height="25" Width="80"
-                Click="btnUpload_Click"/>
-        
+        <StackPanel  Grid.Row="2" VerticalAlignment="Center">
+            <CheckBox Content="Удалить после получения" Name="chbxDeleteAfterDownload"/>
+            <Button Name="btnUpload" Content="Загрузить" Height="25" Width="80"
+                Click="btnUpload_Click" Margin="5"/>
+        </StackPanel>
+
     </Grid>
     
 </Window>

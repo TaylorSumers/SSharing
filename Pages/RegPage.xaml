@@ -22,17 +22,19 @@
 
     <Grid Background="White">
 
-        <Button Content="Назад" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100"/>
+        <Button Content="Назад" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100"
+                Name="btnGoBack" Click="btnGoBack_Click"/>
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Регистрация" FontSize="40" Margin="0 20"/>
             <TextBlock Text="Логин"/>
-            <TextBox Height="30"/>
+            <TextBox Height="30" Name="tbxLogin"/>
             <TextBlock Text="Пароль"/>
-            <PasswordBox Height="30"/>
+            <PasswordBox Height="30" Name="pbxPass"/>
             <TextBlock Text="Повторите пароль"/>
-            <PasswordBox Height="30"/>
-            <Button Content="Зарегистрироваться" Margin="0 20"/>
+            <PasswordBox Height="30" Name="pbxRepPass"/>
+            <Button Name="btnRegistrate" Content="Зарегистрироваться" Margin="0 20"
+                    Click="btnRegistrate_Click"/>
         </StackPanel>
 
     </Grid>

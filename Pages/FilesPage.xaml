@@ -27,18 +27,34 @@
 
         <!-- Row 1 -->
         <TextBlock Text="Мои файлы" FontSize="30" VerticalAlignment="Center" Margin="10 0"/>
-        <Button Content="Выйти" HorizontalAlignment="Right" Margin="10 0"/>
+        <Button Content="Выйти" HorizontalAlignment="Right" Margin="10 0" Name="btnExit"
+                Click="btnExit_Click"/>
 
         <!-- Row 2 -->
-        <DataGrid Grid.Row="1" Margin="10">
-            
+        <DataGrid Grid.Row="1" Margin="10" IsReadOnly="True" Name="dtgFiles" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Имя" Width="0.2*" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Тип" Width="0.15*" Binding="{Binding FileType}"/>
+                <DataGridTextColumn Header="Удалить после получения" Width="0.22*"
+                                    Binding="{Binding DeleteAfterDownload}"/>
+                <DataGridTemplateColumn Header="URL для получения" Width="0.5*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding GetUrl}" IsReadOnly="True"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
         </DataGrid>
 
         <!-- Row 3 -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="Добавить" Margin="10"/>
-            <Button Content="Удалить" Margin="10"/>
-            <Button Content="Скачать" Margin="10"/>
+            <Button Name="btnUpload" Content="Добавить" Margin="10"
+                    Click="btnUpload_Click"/>
+            <Button Name="btnDelete" Content="Удалить" Margin="10"
+                    Click="btnDelete_Click"/>
+            <Button Content="Скачать" Margin="10" Name="btnDownload"
+                    Click="btnDownload_Click"/>
         </StackPanel>
     </Grid>
         
